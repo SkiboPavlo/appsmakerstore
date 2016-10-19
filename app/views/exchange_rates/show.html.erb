@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Period:</strong>
+  <%= @exchange_rate.period %>
+</p>
+
+<p>
+  <strong>Unit:</strong>
+  <%= @exchange_rate.unit %>
+</p>
+
+<%= link_to 'Edit', edit_exchange_rate_path(@exchange_rate) %> |
+<%= link_to 'Back', exchange_rates_path %>
+
+

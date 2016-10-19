@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  period: 2016-10-18
+  unit: 1
+
+two:
+  period: 2016-10-18
+  unit: 1
