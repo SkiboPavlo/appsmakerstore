@@ -1,3 +1,4 @@
+require 'csv'
 class ExchangeRate < ApplicationRecord
 
   def self.save_data
@@ -6,10 +7,17 @@ class ExchangeRate < ApplicationRecord
     IO.copy_stream(download, 'data.csv')
     CSV.new(download).each do |line|
       if line.last.to_f > 0
-        @exchange_rate = ExchangeRate.new({unit: line.last, period: line.first})
-        @exchange_rate.save
-        break
+        ExchangeRate.create({unit: line.last, period: line.first})
       end
+    end
+  end
+
+  def self.calculate(params)
+    rate = self.where(period: params[:date]).first
+    if rate
+      rate.unit * params[:count].to_i
+    else
+      0
     end
   end
 end

@@ -54,6 +54,13 @@ class ExchangeRatesController < ApplicationController
     redirect_to exchange_rates_path
   end
 
+  def calculate
+    @result = ExchangeRate.calculate(params)
+    respond_to do |format|
+      format.html { redirect_to new_exchange_rate_url, notice: @result }
+    end
+  end
+
   private
     def set_exchange_rate
       @exchange_rate = ExchangeRate.find(params[:id])
